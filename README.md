@@ -43,10 +43,10 @@ main
 
 This tiny scripts enumerates info from user identified by certain `UID` or link. `Facebook::Authorize` has only 2 usable methods `login` which serves identical purpose as `initialize` and `interface` which returns control panel.
 
-#### `Interface`
+#### Interface
 `:post_message({:message => String, :images => []}) => nil` - Posts on your timeline the `:message` and `:images` up to 3, with default privacy settings.
 
-`:friends => Hash` - Returns a `Hash` of your friends. The key is `UID` of your friend's profile and value contains yet another `Hash` with keys: `{:first_name, :middle_name, :last_name}`.
+`:friends => {}` - Returns a `Hash` of your friends. The key is `UID` of your friend's profile and value contains yet another `Hash` with keys: `{:first_name, :middle_name, :last_name}`.
 
 `:emails => Array` - Returns a `Array` of email addresses bound to your account.
 
@@ -61,3 +61,37 @@ This tiny scripts enumerates info from user identified by certain `UID` or link.
 `:blacklist => Array` - Returns `Array` of `BlockedAccount`.
 
 `:account({:uid => String, :link => String}) => Account` - Creates new `Account` object of facebook account that can be found using `UID`, direct `link` or `uri` (Link and uri is treated as one thing)
+
+#### BlockedAccount
+`:unblock => nil` - Unlock account.
+
+`:name => String` - Name of blocked profile.
+
+`:uid => String` - `UID` of blocked profile.
+
+### Account
+`:add => nil` - Add friend
+
+`:friend_request? => Boolean` - Check if friendship request is pending
+
+`:cancel_friend_request => nil` - Cancel friendship request if pending
+
+`:remove => Boolean` - Remove friend. Return true if account was removed from your friendlist, false otherwise.
+
+`:friend? => Boolean` - Check if represented account is on your friendlist.
+
+`:block => nil` - Block account.
+
+`:friends({:limit => Fixnum}) => {}` - Returns a `Hash` with key with uri to facebook profile and value with yet another `Hash` with keys: `{:first_name, :middle_name, :last_name}`. `:limit` limits amount of friends it should return. This method may be invoked without this parameter.
+
+`:refresh => nil` - Refresh facebook profile.
+
+`:stories => Array` - Returns `Array` of `Story` objects.
+
+`:send({:text => String, :images => []}) => nil` - Sends a message with `:text` and `:images` up to 3. 
+
+`:poke => nil` - Poke
+
+`:info => {}` - Returns a `Hash`. Each keypair is description of info and the info itself. For example: `{:hometown => 'x', :current_city => 'y'}`.
+
+![get_info.rb](https://i.imgur.com/dKr111D.png)
