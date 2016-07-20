@@ -130,9 +130,9 @@ We refer to `Story` as to timeline post.
 #### Comment
 `:like => Fixnum` - Like comment. Return true if story was liked, false otherwise.
 
-`liked? => Boolean` - Check if story is already liked.
+`:liked? => Boolean` - Check if story is already liked.
 
-`replies => Array` - Returns `Array` of `Comment`.
+`:replies => Array` - Returns `Array` of `Comment`.
 
 `:id => String` - Returns `id` of comment.
 
