@@ -24,7 +24,7 @@ def main
    puts "[+] #{key.to_s.colorize(:color => :green)} => #{value.colorize(:color => :yellow)}"
   end
  rescue RuntimeError, ArgumentError => error
-  puts "[!] ".colorize(:color => :red)
+  print "[!] ".colorize(:color => :red)
   puts error.to_s
  end
 end

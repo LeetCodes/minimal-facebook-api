@@ -23,7 +23,7 @@ def main
    puts
   end
  rescue RuntimeError, ArgumentError => error
-  puts "[!] ".colorize(:color => :red)
+  print "[!] ".colorize(:color => :red)
   puts error.to_s
  end
 end
