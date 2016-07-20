@@ -23,7 +23,7 @@ def main
   account.info.each_pair do |key, value|
    puts "[+] #{key.to_s.colorize(:color => :green)} => #{value.colorize(:color => :yellow)}"
   end
- rescue RuntimeError => error
+ rescue RuntimeError, ArgumentError => error
   puts "[!] ".colorize(:color => :red)
   puts error.to_s
  end
