@@ -3,7 +3,7 @@ module Facebook
   ADVANCED_COMMENT_REGEX = "/mbasic/comment/advanced/"
 
   attr_reader :text, :owner_name, :owner_link, :resources,
-              :likes, :comments_count, :publish_date, :birthday
+              :likes, :comments_count, :publish_date
 
   def initialize(_parameters)
    @post = _parameters[:post]
@@ -12,7 +12,7 @@ module Facebook
    @agent = _parameters[:agent].dup
 
    initialize_body
-   initialize_interface unless @birthday
+   initialize_interface
   end # initialize
   def initialize_body
    @resources = Array.new
@@ -92,8 +92,8 @@ module Facebook
    @agent.get(@like_link)
    return true
   end
-  def resource?
-   return (@resource.nil? ? false : true)
+  def resources?
+   return (@resources.nil? ? false : true)
   end
   def liked?
    return @liked
