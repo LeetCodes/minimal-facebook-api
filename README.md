@@ -44,20 +44,20 @@ main
 This tiny scripts enumerates info from user identified by certain `UID` or link. `Facebook::Authorize` has only 2 usable methods `login` which serves identical purpose as `initialize` and `interface` which returns control panel.
 
 #### `Interface`
->`:post_message({:message => String, :images => []}) => nil` - Posts on your timeline the `:message` and `:images` up to 3, with default privacy settings.
+`:post_message({:message => String, :images => []}) => nil` - Posts on your timeline the `:message` and `:images` up to 3, with default privacy settings.
 
->`:friends => Hash` - Returns a `Hash` of your friends. The key is `UID` of your friend's profile and value contains yet another `Hash` with keys: `{:first_name, :middle_name, :last_name}`.
+`:friends => Hash` - Returns a `Hash` of your friends. The key is `UID` of your friend's profile and value contains yet another `Hash` with keys: `{:first_name, :middle_name, :last_name}`.
 
->`:emails => Array` - Returns a `Array` of email addresses bound to your account.
+`:emails => Array` - Returns a `Array` of email addresses bound to your account.
 
->`:primary_email => String` - Returns a primary email address bound to your account.
+`:primary_email => String` - Returns a primary email address bound to your account.
 
->`:change_password(_old_password => String, _new_password => String) => nil` - Changes account password.
+`:change_password(_old_password => String, _new_password => String) => nil` - Changes account password.
 
->`:name => Hash.new` - Returns a `Hash` with keys: `{:first_name, :middle_name, :last_name}`.
+`:name => Hash.new` - Returns a `Hash` with keys: `{:first_name, :middle_name, :last_name}`.
 
->`:add_email(_email => String) => nil` - Adds email address to your account. It will need to be confirmed.
+`:add_email(_email => String) => nil` - Adds email address to your account. It will need to be confirmed.
 
->`:blacklist => Array` - Returns `Array` of `BlockedAccount`.
+`:blacklist => Array` - Returns `Array` of `BlockedAccount`.
 
->`:account({:uid => String, :link => String}) => Account` - Creates new `Account` object of facebook account that can be found using `UID`, direct `link` or `uri` (Link and uri is treated as one thing)
+`:account({:uid => String, :link => String}) => Account` - Creates new `Account` object of facebook account that can be found using `UID`, direct `link` or `uri` (Link and uri is treated as one thing)
