@@ -145,3 +145,10 @@ We refer to `Story` as to timeline post.
 `:likes => Fixnum` - Returns the number of likes under a story.
 
 `:replies_count => Fixnum` - Returns the number of replies.
+
+## How to install
+```
+$ git clone 'https://github.com/jhst333/minimal-facebook-api'
+$ cd minimal-facebook-api
+$ gem build minimal-facebook-api.gemspec
+# gem install minimal-facebook-api-1.0.0.gem
