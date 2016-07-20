@@ -133,14 +133,14 @@ module Facebook
       name = { :first_name => nil,
                :nick  => nil,
                :last_name => nil }
-      if link.to_s.count(' ').count == 2
+      if link.to_s.scan(/ /).count == 2
        name[:first_name], name[:nick], name[:last_name] = link.to_s.split(' ')
-      elsif link.to_s.count(' ').count == 1
+      elsif link.to_s.scan(/ /).count == 1
        name[:first_name], name[:last_name] = link.to_s.split(' ')
       else
        name[:first_name] = link.to_s
       end
-      friend_list[link.href] = name
+      friend_list[Facebook::strip_uri(link.href)] = name
       count += 1
       break if _parameters.key?(:limit) and _parameters[:limit] == count
      elsif link.href.to_s =~ /#{MORE_FRIENDS_REGEX}/
