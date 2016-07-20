@@ -61,7 +61,7 @@ module Facebook
    email_page = @agent.get('https://m.facebook.com/settings/email')
    # Get mails
    email_page.xpath('//div[contains(@id,\'root\')]/div/div[1]/div[1]/span/span').each do |span|
-    addresses.push(span.text.to_s)
+    addresses.push(span.text.to_s.split(' ')[0])
    end
    return addresses
   end
