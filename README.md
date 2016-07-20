@@ -1,4 +1,4 @@
-# `minimal-facebook-api`
+# minimal-facebook-api
 This is a minimal facebook HTTP-based API created in ruby for educational purposes.
 * Enumerate facebook friends and fetch their info
 * Enumerate their timelines and analyze, comment, un/like their content
@@ -44,7 +44,7 @@ main
 This tiny scripts enumerates info from user identified by certain `UID` or link. `Facebook::Authorize` has only 2 usable methods `login` which serves identical purpose as `initialize` and `interface` which returns control panel.
 
 #### Interface
-`:post_message({:message => String, :images => []}) => nil` - Posts on your timeline the `:message` and `:images` up to 3, with default privacy settings.
+`:post_message({:message => String, :images => []}) => nil` - Posts on your timeline the `:message` and `:images` up to 3, with default privacy settings. `:images` is `Array` of paths to images.
 
 `:friends => {}` - Returns a `Hash` of your friends. The key is `UID` of your friend's profile and value contains yet another `Hash` with keys: `{:first_name, :middle_name, :last_name}`.
 
@@ -69,7 +69,7 @@ This tiny scripts enumerates info from user identified by certain `UID` or link.
 
 `:uid => String` - `UID` of blocked profile.
 
-### Account
+#### Account
 `:add => nil` - Add friend
 
 `:friend_request? => Boolean` - Check if friendship request is pending
@@ -88,10 +88,60 @@ This tiny scripts enumerates info from user identified by certain `UID` or link.
 
 `:stories => Array` - Returns `Array` of `Story` objects.
 
-`:send({:text => String, :images => []}) => nil` - Sends a message with `:text` and `:images` up to 3. 
+`:send({:text => String, :images => []}) => nil` - Sends a message with `:text` and `:images` up to 3. `:images` is `Array` of paths to images.
 
 `:poke => nil` - Poke
 
 `:info => {}` - Returns a `Hash`. Each keypair is description of info and the info itself. For example: `{:hometown => 'x', :current_city => 'y'}`.
 
 ![get_info.rb](https://i.imgur.com/dKr111D.png)
+
+#### Story
+We refer to `Story` as to timeline post.
+
+`:like => Boolean` - Like story. Return true if story was liked, false otherwise.
+
+`:resources? => Boolean` - Check if story contains external media, such as photos.
+
+`:liked? => Boolean` - Check if story is already liked.
+
+`:expandable? => Boolean` - Check if story contains 'More' button.
+
+`:expand => Boolean` - Expands story and modifies return value of `:text` method, to full text. Returns false if post can't be expanded, true otherwise.
+
+`:reply({:text => String, :image => String}) => Boolean` - Replies to story with `:text` and `:image`. Returns false if reply cannot be made, true otherwise. `:image` is path to an image.
+
+`:comments => []` - Returns `Array` of `Comment` objects.
+
+`:text => String` - Returns textual content of story.
+
+`:owner_name => {}` - Returns `Hash` with keys `{:first_name, :middle_name, :last_name}`.
+
+`:owner_link => String` - Return uri to facebook profile.
+
+`:resources => []` - `Array` of links to resources
+
+`:likes => Fixnum` - Returns the number of likes under a story.
+
+`:comments_count => Fixnum` - Returns the number of comments.
+
+`:publish_date => String` - Returns publish date.
+
+#### Comment
+`:like => Fixnum` - Like comment. Return true if story was liked, false otherwise.
+
+`liked? => Boolean` - Check if story is already liked.
+
+`replies => Array` - Returns `Array` of `Comment`.
+
+`:id => String` - Returns `id` of comment.
+
+`:owner_name => String` - Returns owner name.
+
+`:owner_link => String` - Return uri to facebook profile.
+
+`:text => String` - Returns textual content of story.
+
+`:likes => Fixnum` - Returns the number of likes under a story.
+
+`:replies_count => Fixnum` - Returns the number of replies.
