@@ -5,7 +5,7 @@ require 'colorize'
 
 def display_info
  puts "[*] #{__FILE__.colorize(:color => :red)} <login> <password>"
- puts "[*] This script displays info about certain facebook profile"
+ puts "[*] This script displays email addresses"
  exit
 end
 
